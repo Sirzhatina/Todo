@@ -1,0 +1,8 @@
+.vscode/
+.vs/
+
+[Bb]uild/
+
+out/
+
+CMakeUserPresets.json
