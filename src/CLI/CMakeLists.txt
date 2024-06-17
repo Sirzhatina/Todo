@@ -11,3 +11,5 @@ target_sources(${TARGET}
     PRIVATE
         ${SOURCES}
 )
+
+target_link_libraries(${TARGET} Boost::program_options)
