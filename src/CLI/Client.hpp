@@ -4,9 +4,6 @@
 #include <string_view>
 #include <iostream>
 #include <Core/IClient.hpp>
-#include <boost/program_options.hpp>
-
-#define po boost::program_options
 
 class Client final : public IClient {
 public:
@@ -25,8 +22,4 @@ public:
     }
 
 private:
-
-    po::options_description descr{"Allowed options"};
 };
-
-#undef po
