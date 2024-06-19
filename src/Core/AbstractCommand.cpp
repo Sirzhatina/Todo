@@ -22,7 +22,7 @@ void AbstractCommand::storeOptions(std::vector<char*> args) {
 
 std::unique_ptr<AbstractCommand> AbstractCommand::makeCommand(std::string_view cmd) {
     if (cmd == "add") {
-        return std::make_unique<AddCommand>(cmd);
+        return std::make_unique<AddCommand>();
     }
 
     throw std::invalid_argument{"No such command"};
