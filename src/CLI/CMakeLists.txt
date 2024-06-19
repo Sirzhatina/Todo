@@ -13,3 +13,4 @@ target_sources(${TARGET}
 )
 
 target_link_libraries(${TARGET} Boost::program_options)
+target_link_libraries(${TARGET} Todo.Core)
