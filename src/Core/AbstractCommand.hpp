@@ -17,6 +17,8 @@ public:
 
     void storeOptions(std::vector<char*> args);
 
+    static std::unique_ptr<AbstractCommand> makeCommand(std::string_view cmd);
+
 protected:
 
     boost::program_options::options_description m_descr;
