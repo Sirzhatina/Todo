@@ -4,6 +4,7 @@ set(SOURCES
     IClient.hpp
     AbstractCommand.cpp
     AbstractCommand.hpp
+    AddCommand.hpp
 )
 
 add_library(${TARGET} ${SOURCES})
