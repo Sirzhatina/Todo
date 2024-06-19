@@ -23,7 +23,7 @@ protected:
 
     boost::program_options::options_description m_descr;
     boost::program_options::variables_map       m_vm;
-    std::string_view                            m_commandName;
+    std::string                                 m_commandName;
 
 
     static constexpr std::string_view mDEFAULT_DESCRIPTION = "Allowed options";
