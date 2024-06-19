@@ -9,9 +9,7 @@
 class AbstractCommand {
 public:
     AbstractCommand(std::string_view commandName, 
-                    std::string_view optionsDescription = mDEFAULT_DESCRIPTION)
-    : m_commandName{commandName}
-    , m_descr{optionsDescription.data()} { }
+                    std::string_view optionsDescription = mDEFAULT_DESCRIPTION);
 
     virtual ~AbstractCommand() = default;
 
