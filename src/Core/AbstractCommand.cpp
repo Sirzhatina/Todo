@@ -1,10 +1,9 @@
 #include "AbstractCommand.hpp"
 #include "AddCommand.hpp"
 
-AbstractCommand::AbstractCommand(std::string_view commandName, 
-                    std::string_view optionsDescription = mDEFAULT_DESCRIPTION)
-    : m_commandName{commandName}
-    , m_descr{optionsDescription.data()} { }
+AbstractCommand::AbstractCommand(std::string_view commandName, std::string_view optionsDescription)
+    : m_descr{optionsDescription.data()}
+    , m_commandName{commandName} { }
 
 void AbstractCommand::storeOptions(std::vector<char*> args) {
     using namespace boost;
