@@ -1,6 +1,15 @@
 #include <iostream>
 #include <boost/program_options.hpp>
 #include <format>
+#include <string>
+
+struct Task {
+    std::string name;
+    std::string description;
+
+    bool isComplete{false};
+};
+
 
 int main(int argc, char* argv[]) {
     namespace po = boost::program_options;
