@@ -4,7 +4,6 @@ set(SOURCES
     main.cpp
     Client.cpp
     Client.hpp
-    Task.hpp
 )
 
 add_executable(${TARGET})
@@ -15,4 +14,4 @@ target_sources(${TARGET}
 )
 
 target_link_libraries(${TARGET} Boost::program_options)
-# target_link_libraries(${TARGET} Todo.Core)
+target_link_libraries(${TARGET} Todo.Core)
