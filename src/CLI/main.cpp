@@ -1,56 +1,21 @@
 #include <iostream>
+#include "Client.hpp"
 #include <boost/program_options.hpp>
-#include <format>
-#include <string>
-
-struct Task {
-    std::string name;
-    std::string description;
-
-    bool isComplete{false};
-};
-
-
 int main(int argc, char* argv[]) {
     namespace po = boost::program_options;
 
-    constexpr auto programUsage = "Usage: program add [options]";
+    // Task newTask;
+    // if (vm.count("name")) {
+    //     newTask.name = vm["name"].as<std::string>();
+    // }
+    // if (vm.count("description")) {
+    //     newTask.description = vm["description"].as<std::string>();
+    // }
 
-    if (argc < 2) {
-        std::cerr << std::format("{}\n", programUsage);
+    auto app = Client::makeClient(argc, argv);
+    if (!app) {
+        std::cerr << "Failed creating Client" << std::endl;
         return EXIT_FAILURE;
     }
-
-    if (std::string{argv[1]} != "add") {
-        std::cerr << "Unknown command\n";
-        return EXIT_FAILURE;
-    }
-
-    po::options_description addOptions{std::format("{}. Options are", programUsage)};
-    addOptions.add_options()
-        ("name,n", po::value<std::string>(), "Task name")
-        ("description,d", po::value<std::string>(), "Task description")
-        ("help,h", "shows this message");
-
-    po::variables_map vm;
-    po::store(po::command_line_parser{
-        std::vector<std::string>{argv + 2, argv + argc}
-        }.options(addOptions)
-        .run(), 
-        vm
-    );
-    po::notify(vm);
-
-    if (vm.size() == 0 || vm.count("help")) {
-        std::cout << addOptions;
-        return 0;
-    }
-
-    Task newTask;
-    if (vm.count("name")) {
-        newTask.name = vm["name"].as<std::string>();
-    }
-    if (vm.count("description")) {
-        newTask.description = vm["description"].as<std::string>();
-    }
+    return app->run();
 }

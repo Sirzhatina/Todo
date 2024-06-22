@@ -2,6 +2,9 @@ set(TARGET Todo.CLI)
 
 set(SOURCES
     main.cpp
+    Client.cpp
+    Client.hpp
+    Task.hpp
 )
 
 add_executable(${TARGET})
