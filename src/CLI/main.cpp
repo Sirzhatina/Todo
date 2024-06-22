@@ -28,8 +28,8 @@ int main(int argc, char* argv[]) {
 
     po::options_description addOptions{std::format("{}. Options are", programUsage)};
     addOptions.add_options()
-        ("name,n", "Task name")
-        ("description,d", "Task description")
+        ("name,n", po::value<std::string>(), "Task name")
+        ("description,d", po::value<std::string>(), "Task description")
         ("help,h", "shows this message");
 
     po::variables_map vm;
@@ -44,5 +44,13 @@ int main(int argc, char* argv[]) {
     if (vm.size() == 0 || vm.count("help")) {
         std::cout << addOptions;
         return 0;
+    }
+
+    Task newTask;
+    if (vm.count("name")) {
+        newTask.name = vm["name"].as<std::string>();
+    }
+    if (vm.count("description")) {
+        newTask.description = vm["description"].as<std::string>();
     }
 }
